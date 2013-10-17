@@ -97,6 +97,15 @@ gui.TransitionPlugin = gui.Plugin.extend ({
 	},
 
 	/**
+	 * @TODO: Cosmetically clear traces of transition from (inline) HTML.
+	 *
+	reset : function () {
+		this.property ( "" );
+		this.timing ( "" );
+	},
+	*/
+
+	/**
 	 * Configure transition and run one or CSS updates. Any key in the config 
 	 * argument that matches a method name in this plugin will be invoked with 
 	 * the property value as argument; the rest will be treated as CSS updates.

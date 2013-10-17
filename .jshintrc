@@ -1,0 +1,19 @@
+{
+	"browser": true,
+	"esnext": true,
+	"globals": {
+		"module" : true,
+		"require" : true,
+		"console" : true,
+		"gui" : true,
+		"edb" : true,
+		"alert" : true
+	},
+	"globalstrict": false,
+	"quotmark": false,
+	"smarttabs": true,
+	"trailing": false,
+	"undef": true,
+	"unused": "vars",
+	"sub": true
+}

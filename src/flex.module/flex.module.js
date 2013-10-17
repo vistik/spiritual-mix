@@ -36,10 +36,10 @@ gui.module ( "flex", {
 	 * @param {Window} context
 	 */
 	onbeforespiritualize : function ( context ) {
-		this._edbsetup ( context );
 		if ( !context.gui.flexloaded ) { // @see {gui.FlexCSS}
 			gui.FlexCSS.load ( context, context.gui.flexmode );
 		}
+		this._edbsetup ( context );
 	},
 
 	/**
