@@ -36,10 +36,10 @@ gui.module ( "flex", {
 	 * @param {Window} context
 	 */
 	onbeforespiritualize : function ( context ) {
-		this._edbsetup ( context );
 		if ( !context.gui.flexloaded ) { // @see {gui.FlexCSS}
 			gui.FlexCSS.load ( context, context.gui.flexmode );
 		}
+		this._edbsetup ( context );
 	},
 
 	/**
@@ -53,13 +53,7 @@ gui.module ( "flex", {
 			try {
 				gui.CSSPlugin.compute ( root, "display" );
 				context.gui.reflex ();
-			} catch ( geckoexception ) {
-				/*
-				if ( !gui.Type.isDefined ( root.life.visibility )) {
-					root.life.add ( gui.LIFE_VISIBLE, this ); // doesn't work...
-				}
-				*/
-			}
+			} catch ( geckoexception ) {}
 		}
 		gui.Broadcast.addGlobal ( gui.BROADCAST_RESIZE_END, {
 			onbroadcast : function () {
