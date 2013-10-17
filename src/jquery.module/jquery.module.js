@@ -1,4 +1,10 @@
 /**
+ * Introducing new mode for spirit management.
+ * @type {String}
+ */
+gui.MODE_JQUERY = "jquery";
+
+/**
  * Do what Spiritual does by overloading JQuery methods instead of native DOM methods.
  * @TODO reduce crawled collections using compareDocumentPosition (also on following and preceding)
  * @TODO (Angular special) handle function replaceWith, "a special jqLite.replaceWith, which can replace items which have no parents"
@@ -10,7 +16,7 @@ gui.module ( "jquery", {
 	 * @param {Window} context
 	 */
 	oncontextinitialize : function ( context ) {
-		if ( context === top ) {
+		if ( !context.gui.portalled ) {
 			this._spiritualdom ();
 		}
 	},
@@ -247,25 +253,27 @@ gui.module ( "jquery", {
 			var elm = spirit.element;
 			var doc = elm.ownerDocument;
 			var win = doc.defaultView;
-			var dom = spirit.dom.embedded();
+			var dom = spirit.dom.embedded ();
 			var is$ = win.gui.mode === gui.MODE_JQUERY;
 			return { elm : elm, doc : doc, win : win, dom : dom, is$ : is$ };
 		}
 		// manage invoker subtree.
-		[ "html", "empty", "text" ].forEach ( function ( method ) {
+		// @TODO outerHtml!
+		[ "html", "text" ].forEach ( function ( method ) {
 			var old = plugin [ method ];
 			plugin [ method ] = function () {
 				var args = arguments, res;
-				var b = breakdown ( this.spirit );
-				if ( b.is$ ) {
-					if ( b.dom ){
-						gui.Guide.materializeSub ( b.elm );
+				var sets = args.length;
+				var down = breakdown ( this.spirit );
+				if ( sets && down.is$ ) {
+					if ( down.dom ){
+						gui.Guide.materializeSub ( down.elm );
 					}
-					res = gui.Observer.suspend ( b.elm, function () {
+					res = gui.Observer.suspend ( down.elm, function () {
 						return old.apply ( this, args );
 					}, this );
-					if ( b.dom && method === "html" ) {
-						gui.Guide.spiritualizeSub ( b.elm );
+					if ( down.dom && method === "html" ) {
+						gui.Guide.spiritualizeSub ( down.elm );
 					}
 				} else {
 					res = old.apply ( this, args );

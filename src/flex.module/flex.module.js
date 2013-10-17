@@ -1,6 +1,6 @@
 gui.FLEXMODE_NATIVE = "native";
 gui.FLEXMODE_EMULATED = "emulated";
-gui.FLEXMODE_OPTIMIZED = "optimized",
+gui.FLEXMODE_OPTIMIZED = "optimized";
 
 /**
  * Provides a subset of flexible boxes that works in IE9 
@@ -11,7 +11,7 @@ gui.FLEXMODE_OPTIMIZED = "optimized",
  * @see {gui.FlexCSS}
  */
 gui.module ( "flex", {
-
+ 
 	/** 
 	 * Setup gui.FlexPlugin for all spirits. Spirits may 
 	 * update subtree flex by using `this.flex.reflex()`
@@ -53,13 +53,7 @@ gui.module ( "flex", {
 			try {
 				gui.CSSPlugin.compute ( root, "display" );
 				context.gui.reflex ();
-			} catch ( geckoexception ) {
-				/*
-				if ( !gui.Type.isDefined ( root.life.visibility )) {
-					root.life.add ( gui.LIFE_VISIBLE, this ); // doesn't work...
-				}
-				*/
-			}
+			} catch ( geckoexception ) {}
 		}
 		gui.Broadcast.addGlobal ( gui.BROADCAST_RESIZE_END, {
 			onbroadcast : function () {
@@ -77,20 +71,6 @@ gui.module ( "flex", {
 	oncontextunload : function ( context ) {
 		gui.FlexCSS.unload ( context );
 	},
-
-	/**
-	 * Still no luck with Gecko unless we alert at this point :(
-	 * Perhaps onvisible not updated right in gui.DocumentSpirit?
-	 * @param {gui.Life} life
-	 *
-	onlife : function ( life ) {
-		if ( life.type === gui.LIFE_VISIBLE ) {
-			setTimeout(function(){
-				life.target.window.gui.reflex ();
-			},250);
-		}
-	},
-	*/
 
 
 	// Private ...................................................
@@ -114,7 +94,7 @@ gui.module ( "flex", {
 			});
 		}
 	}
-	
+
 });
 
 /**
