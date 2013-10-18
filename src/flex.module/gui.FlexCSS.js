@@ -94,8 +94,8 @@ gui.FlexCSS = {
 gui.FlexCSS.emulated =  {
 	".flexrow, .flexcol" : {
 		"display" : "block"
-		//"width" : "100%",
-		//"height" : "100%"
+		//"width" : "100%", // @TODO must go back
+		//"height" : "100%" // @TODO must go back
 	},
 	/*
 	".flexcol > .flexrow" : { // hmm...

@@ -115,7 +115,7 @@ gui.module ( "flex", {
 		doc = child.ownerDocument;
 		win = doc.defaultView;
 		if ( win.gui.flexmode === gui.FLEXMODE_EMULATED ) {
-			if ( gui.DOMPlugin.embedded ( child )) {
+			//if ( gui.DOMPlugin.embedded ( child )) { // @TODO: this but not after removeChild!
 				child = child === doc.documentElement ? child : child.parentNode;
 				gui.Tick.next ( function () {
 					try {
@@ -124,7 +124,7 @@ gui.module ( "flex", {
 						// TODO: Don't go here
 					}
 				});
-			}
+			//}
 		}
 	}
 
