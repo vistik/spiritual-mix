@@ -92,36 +92,36 @@ gui.FlexCSS = {
  * @todo Attempt all this using floats instead of inline-block and table layouts.
  */
 gui.FlexCSS.emulated =  {
-	".flexrow, .flexcol" : {
+	".ts-flexrow, .ts-flexcol" : {
 		"display" : "block"
 		//"width" : "100%", // @TODO must go back
 		//"height" : "100%" // @TODO must go back
 	},
 	/*
-	".flexcol > .flexrow" : { // hmm...
+	".ts-flexcol > .ts-flexrow" : { // hmm...
 		"height" : "100%"
 	},
 	*/
-	".flexrow" : {
+	".ts-flexrow" : {
 		"white-space" : "nowrap"
 	},
-	".flexrow > *" : {
+	".ts-flexrow > *" : {
 		"display" : "inline-block",
 		"vertical-align" : "top",
 		"white-space" : "normal",
 		"height" : "100%"
 	},
-	".flexrow > ._flexcorrect" : {
+	".ts-flexrow > ._ts-flexcorrect" : {
 		"margin" : "0 0 0 -4px !important" // @TODO correlate to computed font-size :)
 	},
-	".flexcol > *" : {
+	".ts-flexcol > *" : {
 		"display" : "block",
 		"width" : "100%"
 	},
-	".flexlax > .flexrow" : {
+	".ts-flexlax > .ts-flexrow" : {
 		"display" : "table"
 	},
-	".flexlax > .flexrow > *" : {
+	".ts-flexlax > .ts-flexrow > *" : {
 		"display" : "table-cell"
 	}
 };
@@ -132,33 +132,33 @@ gui.FlexCSS.emulated =  {
  */
 gui.FlexCSS [ "native" ] = ( function () {
 	var rules = {
-		".flexrow, .flexcol" : {
+		".ts-flexrow, .ts-flexcol" : {
 			"display": "-beta-flex",
 			"-beta-flex-wrap" : "nowrap"
 		},
-		".flexcol" : {
+		".ts-flexcol" : {
 			"-beta-flex-direction" : "column",
 			"min-height" : "100%"
 		},
-		".flexrow" : {
+		".ts-flexrow" : {
 			"-beta-flex-direction" : "row",
 			"min-width": "100%"
 		},
-		".flexrow:not(.flexlax) > *, .flexcol:not(.flexlax) > *" : {
+		".ts-flexrow:not(.ts-flexlax) > *, .ts-flexcol:not(.ts-flexlax) > *" : {
 				"-beta-flex-basis" : 1
 		},
-		".flexrow > .flexrow" : {
+		".ts-flexrow > .ts-flexrow" : {
 			"min-width" : "auto"
 		}
 	};
 	function declare ( n ) {
-		rules [ ".flexrow > .flex" + n + ", .flexcol > .flex" + n ] = {
+		rules [ ".ts-flexrow > .ts-flex" + n + ", .ts-flexcol > .ts-flex" + n ] = {
 			"-beta-flex-grow" : n || 1
 		};
-		rules [ ".flexrow:not(.flexlax) > .flex" + n ] = {
+		rules [ ".ts-flexrow:not(.ts-flexlax) > .ts-flex" + n ] = {
 			"width" : "0"
 		};
-		rules [ ".flexcol:not(.flexlax) > .flex" + n ] = {
+		rules [ ".ts-flexcol:not(.ts-flexlax) > .ts-flex" + n ] = {
 			"height" : "0"
 		};
 		

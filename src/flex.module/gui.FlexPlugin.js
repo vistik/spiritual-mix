@@ -42,7 +42,7 @@ gui.FlexPlugin = gui.Plugin.extend ({
 	 */
 	reflex : function ( elm ) {
 		if ( this._emulated ( elm )) {
-			this._crawl ( elm, "flex" );
+			this._crawl ( elm, "ts-flex" );
 		}
 	},
 
@@ -126,7 +126,7 @@ gui.FlexPlugin = gui.Plugin.extend ({
 	 * @return {boolean}
 	 */
 	_isflex : function ( elm, disabled ) {
-		return [ "flexrow", "flexcol" ].some ( function ( name ) {
+		return [ "ts-flexrow", "ts-flexcol" ].some ( function ( name ) {
 			name = name + ( disabled ? "-disabled" : "" );
 			return gui.CSSPlugin.contains ( elm, name );
 		});
@@ -139,7 +139,7 @@ gui.FlexPlugin = gui.Plugin.extend ({
 	 * @return {boolean}
 	 */
 	_hasflex : function ( elm, disabled ) {
-		return [ "flexrow", "flexcol" ].some ( function ( name ) {
+		return [ "ts-flexrow", "ts-flexcol" ].some ( function ( name ) {
 			name = name + ( disabled ? "-disabled" : "" );
 			return elm.querySelector ( "." + name );
 		});

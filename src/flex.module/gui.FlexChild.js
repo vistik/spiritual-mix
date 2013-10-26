@@ -80,6 +80,9 @@ gui.FlexChild.prototype = {
 	 */
 	_element : null,
 
+	/**
+	 * @param {boolean} enable
+	 */
 	_enable : function ( enable ) {
 		var name, next, elm = this._element, css = gui.CSSPlugin;
 		this._element.className.split ( " ").forEach ( function ( klass ) {
@@ -103,16 +106,16 @@ gui.FlexChild.prototype = {
  * horizontal spacing on inline-block elements.
  * @type {String}
  */
-gui.FlexChild._FLEXCORRECT = "_flexcorrect";
+gui.FlexChild._FLEXCORRECT = "_ts-flexcorrect";
 
 /**
  * Check for flexN classname.
  * @type {RegExp}
  */
-gui.FlexChild._FLEXNAME = /^flex\d*$/;
+gui.FlexChild._FLEXNAME = /^ts-flex\d*$/;
 
 /**
- * Extract N from classname (eg .flex23).
+ * Extract N from classname (eg .ts-flex23).
  * @type {RegExp}
  */
 gui.FlexChild._FLEXRATE = /\d/;

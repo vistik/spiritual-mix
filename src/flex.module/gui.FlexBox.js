@@ -82,8 +82,8 @@ gui.FlexBox.prototype = {
 	 */
 	_onconstruct : function ( elm ) {
 		this._element = elm;
-		this._flexcol = this._hasclass ( "flexcol" );
-		this._flexlax = this._hasclass ( "flexlax" );
+		this._flexcol = this._hasclass ( "ts-flexcol" );
+		this._flexlax = this._hasclass ( "ts-flexlax" );
 		this._children = this._collectchildren ( elm );
 	},
 
@@ -214,7 +214,7 @@ gui.FlexBox.prototype = {
 	 */
 	_enable : function ( enable ) {
 		var name, next, elm = this._element, css = gui.CSSPlugin;
-		[ "flexrow", "flexcol" ].forEach ( function ( klass ) {
+		[ "ts-flexrow", "ts-flexcol" ].forEach ( function ( klass ) {
 			name = enable ? klass + "-disabled" : klass;
 			next = enable ? klass : klass + "-disabled";
 			if ( css.contains ( elm, name )) {
